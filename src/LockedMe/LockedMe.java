@@ -14,5 +14,10 @@ public class LockedMe {
 		
 		System.out.println("💻Developer Name: Avik Goon");
 		System.out.println("📪️️Developer Email: goonavik@lockedme.com");
+		
+		String username = new UserDetails().getUserName();
+		System.out.println("Hi, "+username);
+		System.exit(0);
+		
 	}
 }
