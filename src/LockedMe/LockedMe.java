@@ -7,26 +7,14 @@ public class LockedMe {
 	public static void main(String args []) throws IOException {
 		Scanner input = new Scanner(System.in);
 		int option = 0;
-		System.out.println("*****************************************");
-		System.out.println("*\t\t\t\t\t*");	
-		System.out.println("*\t\t\t\t\t*");	
-		System.out.println("*\t\t\t\t\t*");	
-		System.out.println("*\t ------WELCOME TO------\t\t*");	
-		System.out.println("*\t\tLOCKEDME\t\t*");				
-		System.out.println("*\t\t\t\t\t*");	
-		System.out.println("*\t\t\t\t\t*");	
-		System.out.println("*****************************************");
-		
-		System.out.println("------------------------------------------");
-		System.out.println("💻Developer Name: Avik Goon");
-		System.out.println("📪️️Developer Email: goonavik@lockedme.com");
-		System.out.println("------------------------------------------");
+		//display welcome message
+		new WelcomeMessage().showWellcomeGraphic();
 		
 		//ask user good name, then proceed
 		String username = (String) new UserDetails(input).getUserName();		
 		System.out.println("Hi,🙋 "+username);
 		
-		mainmenu: while(true) {	
+		mainmenu: do {	
 			try {
 			System.out.println("Choose any option from the following: 👇");
 			System.out.println("1.👀 Show all Files");
@@ -42,24 +30,26 @@ public class LockedMe {
 					int submenuOptionNumber = new MoreOptions(input).createMoreFileOptions();
 					if( submenuOptionNumber == 1 ) {
 						// create a new file
+						//submenuOptionNumber = new MoreOptions(input).createMoreFileOptions();
 					}else if( submenuOptionNumber == 2 ) {
 						// delete a existing file
 					} else if( submenuOptionNumber == 3 ) {
 						// search for a file
 					} else continue mainmenu;
 				case 3:
-					input.close();
-					System.out.println("Good Bye ..🙋");
+					input.close();System.out.println("Good Bye ..🙋");
 					System.exit(0);
 				
 				default:
-					throw new IllegalArgumentException("Unexpected value: " + option);
+					throw new IllegalArgumentException("Unexpected value: " + option+"\nProgram will terminate now...");
 				}
 			} catch (Exception e) {
 				System.out.println(e.getLocalizedMessage());
 				input.close();
+				System.out.println("Good Bye ..🙋");
+				System.exit(0);
 			}
-		}
+		}while(true);
 		
 	}
 }
