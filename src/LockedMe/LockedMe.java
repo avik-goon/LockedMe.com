@@ -26,24 +26,30 @@ public class LockedMe {
 		String username = (String) new UserDetails(input).getUserName();		
 		System.out.println("Hi,🙋 "+username);
 		
-		do {
+		mainmenu: while(true) {	
 			try {
 			System.out.println("Choose any option from the following: 👇");
-			System.out.println("1. Show all Files");
-			System.out.println("2. More File Operations");
-			System.out.println("3. Exit");
+			System.out.println("1.👀 Show all Files");
+			System.out.println("2.➡️ More File Operations");
+			System.out.println("3.🚪 Exit");
 			option = input.nextInt();
-				switch (option) {
+			switch (option) {
 				case 1:
 					
 					break;
 				
 				case 2:
-					
-					break;
-				
+					int submenuOptionNumber = new MoreOptions(input).createMoreFileOptions();
+					if( submenuOptionNumber == 1 ) {
+						// create a new file
+					}else if( submenuOptionNumber == 2 ) {
+						// delete a existing file
+					} else if( submenuOptionNumber == 3 ) {
+						// search for a file
+					} else continue mainmenu;
 				case 3:
-					System.out.println("Good Bye ..");
+					input.close();
+					System.out.println("Good Bye ..🙋");
 					System.exit(0);
 				
 				default:
@@ -51,12 +57,9 @@ public class LockedMe {
 				}
 			} catch (Exception e) {
 				System.out.println(e.getLocalizedMessage());
+				input.close();
 			}
-		}while( option != 3 );
-		
-		
-		
-		input.close();
+		}
 		
 	}
 }
