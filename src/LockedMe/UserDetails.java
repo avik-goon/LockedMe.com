@@ -11,16 +11,19 @@ import java.util.Scanner;
  *	This class gets the user information
  * 
  * @method getUserName()
+ * ask user to enter his/her name
  * 
  */
 public class UserDetails {
+	Scanner sc;
+	public UserDetails(Scanner sc2) {
+		this.sc = sc2;
+		
+	}
 	
 	public String getUserName() {
-		Scanner sc = new Scanner(System.in);
-		String name;
 		System.out.println("\nHi, What should I call You?\n");
-		name = sc.nextLine();
-		sc.close();
-		return name;
+		String name = sc.nextLine();
+		return (name);
 	}
 }
